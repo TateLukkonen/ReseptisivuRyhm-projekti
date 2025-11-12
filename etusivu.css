@@ -1,0 +1,11 @@
+.header {
+  background-color: #d1872d;
+}
+
+.headerButton {
+  background-color: #96b652;
+  border: none;
+  height: 35px;
+  width: 100px;
+  border-radius: 20px;
+}
