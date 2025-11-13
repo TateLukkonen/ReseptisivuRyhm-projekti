@@ -4,6 +4,7 @@ async function randomizeEtusivu() {
     const meal = data.meals[0]
     
     document.getElementById("tempImg").innerHTML = `<img src="${meal.strMealThumb}" alt="randomFoodImg">`;
+    document.getElementById("tempDisc").innerHTML = `<p>${meal.strInstructions}</p>`;
 }
 
 randomizeEtusivu()
