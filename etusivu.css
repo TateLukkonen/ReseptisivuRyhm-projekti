@@ -1,5 +1,6 @@
 .body {
   background-color: #f0eb62;
+  font-family: "Comic Relief", cursive;
 }
 
 .header {
@@ -33,6 +34,7 @@
   background-color: #f0eb62;
   margin: 30px 625px;
   padding: 10px 30px;
+  font-family: "Luckiest Guy", cursive;
 }
 
 #tempImg {
