@@ -1,27 +1,27 @@
 .header {
-    background-color: #d1872d;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 50px;
+  background-color: #d1872d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px;
 }
 
 .leftButtons,
 .rightButtons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .headerButton {
-    background-color: #96b652;
-    height: 45px;
-    width: 100px;
-    border-radius: 20px;
-    cursor: pointer;
+  background-color: #96b652;
+  height: 45px;
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .searchButton {
-    width: 250px;
+  width: 250px;
 }
 @font-face {
   font-family: "comicRelief";
