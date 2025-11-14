@@ -1,9 +1,13 @@
+.body {
+  background-color: #f0eb62;
+}
+
 .header {
   background-color: #d1872d;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 50px;
+  padding: 25px 50px;
 }
 
 .leftButtons,
@@ -22,4 +26,25 @@
 
 .searchButton {
   width: 250px;
+}
+
+.h1 {
+  text-align: center;
+  background-color: #f0eb62;
+  margin: 30px 625px;
+  padding: 10px 30px;
+}
+
+#tempImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 50%;
+}
+
+#tempDisc {
+  background-color: #f0eb62;
+  margin: 30px 200px;
+  padding: 20px 40px;
 }
