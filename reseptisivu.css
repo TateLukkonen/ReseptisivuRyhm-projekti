@@ -3,14 +3,35 @@ body {
 }
 
 #h-search {
+    display: flex;
     height: 20px;
+    width: 150px;
 }
-
+.search-bar {
+    display: flex;
+    justify-content: center;
+}
 .main-area {
     display: flex;
     flex-direction: row;
 }
+#s-list {
+    list-style: none;
+}
 
+#s-list:hover {
+    cursor: pointer;
+}
+
+.filter-bar {
+    width: 200px;
+    position: sticky;
+    padding-top: 10px;
+    top: 20px;
+    background-color: #d1872d;
+    margin-top: 20px;
+    height: 650px;
+}
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
