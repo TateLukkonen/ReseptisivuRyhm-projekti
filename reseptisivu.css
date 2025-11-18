@@ -1,11 +1,14 @@
 body {
-    background-color: #f0eb62;
+    background-color: #fffcb9;
 }
 
 #h-search {
     display: flex;
+    border-radius: 10px;
     height: 20px;
+    border-style: none;
     width: 150px;
+    background-color: #96b652;
 }
 .search-bar {
     display: flex;
@@ -20,8 +23,9 @@ body {
     list-style: none;
 }
 
-#s-list:hover {
+#s-list li:hover {
     cursor: pointer;
+    color: blue;
 }
 
 .filter-bar {
@@ -46,8 +50,6 @@ body {
     align-items: center;
     width: 300px;
     height: 400px;
-    border: 3px;
-    border-style: solid;
     border-radius: 10px;
     background-color: #96b652;
 }
