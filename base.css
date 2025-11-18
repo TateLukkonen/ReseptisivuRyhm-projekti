@@ -43,3 +43,24 @@ a {
   font-family: "luckiestGuy";
   src: url(assets/LuckiestGuy-Regular.ttf) format("truetype");
 }
+
+body {
+  font-family: "Comic Relief", cursive;
+}
+
+a {
+  font-family: "luckiestguy", cursive;
+}
+
+h4 {
+  font-family: "luckiestguy", cursive;
+}
+
+h1 {
+  font-family: "luckiestguy", cursive;
+}
+
+input::placeholder {
+  color: black;
+  font-family: "luckiestGuy", cursive;
+}

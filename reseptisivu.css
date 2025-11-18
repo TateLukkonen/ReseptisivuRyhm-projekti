@@ -14,6 +14,7 @@ body {
 .main-area {
     display: flex;
     flex-direction: row;
+    margin-top: 20px;
 }
 #s-list {
     list-style: none;
@@ -29,7 +30,6 @@ body {
     padding-top: 10px;
     top: 20px;
     background-color: #d1872d;
-    margin-top: 20px;
     height: 650px;
 }
 .grid-container {
@@ -37,6 +37,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     row-gap: 25px;
     place-items: center;
+    width: -webkit-fill-available;
 }
 
 .c1 {
