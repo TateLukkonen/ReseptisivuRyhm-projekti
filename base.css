@@ -1,3 +1,6 @@
+.hidden {
+  display: none;
+}
 .header {
   background-color: #d1872d;
   display: flex;

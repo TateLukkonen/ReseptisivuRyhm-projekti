@@ -202,6 +202,7 @@ function openPopup(index) {
   }
 
   p1.classList.add("p1-show");
+  p1.classList.remove("hidden")
 }
 
 p1Close.addEventListener("click", () => p1.classList.remove("p1-show"));
