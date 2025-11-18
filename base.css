@@ -39,8 +39,8 @@ a {
   src: url(assets/ComicRelief-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-family: "luckiestGuy";
-  src: url(assets/LuckiestGuy-Regular.ttf) format("truetype");
+  font-family: "Englebert";
+    src: url(assets/Englebert-Regular.ttf) format("truetype");
 }
 
 body {
@@ -48,19 +48,20 @@ body {
 }
 
 a {
-  font-family: "luckiestguy", cursive;
+  font-family: "Englebert", cursive;
 }
 
 h4 {
-  font-family: "luckiestguy", cursive;
+  font-size: 25px;
+    font-family: "Englebert", cursive;
 }
 
 h1 {
-  font-family: "luckiestguy", cursive;
+  font-family: "Englebert", cursive;
 }
 
 input::placeholder {
   padding: 10px;
   color: black;
-  font-family: "luckiestGuy", cursive;
+  font-family: "Englebert", cursive;
 }
