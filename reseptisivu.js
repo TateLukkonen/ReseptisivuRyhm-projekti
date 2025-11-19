@@ -206,9 +206,10 @@ function openPopup(index) {
   }
 
   p1.classList.add("p1-show");
+  p1.classList.remove("hidden")
 }
 
-p1Close.addEventListener("click", () => p1.classList.remove("p1-show"));
+p1Close.addEventListener("click", () => p1.classList.add("hidden"));
 p1Prev.addEventListener("click", () => {
   if (currentIndex > 0) openPopup(currentIndex - 1);
 });

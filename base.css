@@ -1,3 +1,6 @@
+.hidden {
+  display: none;
+}
 .header {
   background-color: #d1872d;
   display: flex;
@@ -6,6 +9,9 @@
   padding: 30px 50px;
 }
 
+.leftButtons {
+  cursor: pointer;
+}
 .leftButtons,
 .rightButtons {
   display: flex;
@@ -21,13 +27,12 @@ a {
 }
 .headerButton {
   background-color: #96b652;
-  border-style: solid;
+  border-style: none;
   height: 45px;
-  border-color: black;
   width: 100px;
   border-radius: 20px;
-  cursor: pointer;
 }
+
 
 .searchButton {
   width: 250px;
@@ -37,6 +42,29 @@ a {
   src: url(assets/ComicRelief-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-family: "luckiestGuy";
-  src: url(assets/LuckiestGuy-Regular.ttf) format("truetype");
+  font-family: "Englebert";
+    src: url(assets/Englebert-Regular.ttf) format("truetype");
+}
+
+body {
+  font-family: "Comic Relief", cursive;
+}
+
+a {
+  font-family: "Englebert", cursive;
+}
+
+h4 {
+  font-size: 25px;
+    font-family: "Englebert", cursive;
+}
+
+h1 {
+  font-family: "Englebert", cursive;
+}
+
+input::placeholder {
+  padding: 10px;
+  color: black;
+  font-family: "Englebert", cursive;
 }
