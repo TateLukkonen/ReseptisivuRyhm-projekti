@@ -125,7 +125,11 @@ hSearch.addEventListener("input", () => {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(async () => {
     const query = hSearch.value.trim();
-    if (!query) return;
+
+    if (!query) {
+      loadMealsC1("All");
+      return;
+    }
 
     const res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
