@@ -69,3 +69,28 @@ body {
     height: 50px;
     width: 75px;
 }
+body.no-scroll {
+    overflow: hidden;
+}
+
+.p1 {
+    background-color: #96b652;
+    padding-top: 30px;
+    width: 50%;
+    position: fixed;
+    inset: 0;
+    top: 100px;
+}
+
+.p1-content {
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.p1-content img {
+    max-width: 200px;
+}
+
+.p1-content::-webkit-scrollbar {
+    display: none;
+}
