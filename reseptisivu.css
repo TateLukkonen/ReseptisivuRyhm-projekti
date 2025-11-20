@@ -75,11 +75,13 @@ body.no-scroll {
 
 .p1 {
     background-color: #96b652;
-    padding-top: 30px;
-    width: 50%;
+    width: 75%;
     position: fixed;
+    padding: 30px;
     inset: 0;
+    border-radius: 10px;
     top: 100px;
+    border: black, solid, 3px;
 }
 
 .p1-content {
@@ -87,10 +89,29 @@ body.no-scroll {
     max-height: 100%;
 }
 
-.p1-content img {
+.p1-img {
+    display: flex;
+    justify-self: center;
+    align-self: center;
     max-width: 200px;
+}
+.ing-img {
+    max-width: 100px;
 }
 
 .p1-content::-webkit-scrollbar {
     display: none;
+}
+#p1-ingredients li::marker {
+    content: "";
+}
+
+#p1-ingredients li {
+    display: flex;
+    align-items: center;
+}
+
+.instructions-box {
+    display: flex;
+    flex-direction: row;
 }
