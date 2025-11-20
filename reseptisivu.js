@@ -84,7 +84,7 @@ async function loadC1() {
 }
 
 async function loadAllMeals() {
-  g1.innerHTML = "<p>Loading all meals...</p>";
+  g1.innerHTML = "<p>Loading meals...</p>";
   const letters = "abcdefghijklmnopqrstuvwxyz".split("");
   const allMeals = [];
 
@@ -118,7 +118,7 @@ async function loadMealsC1(category) {
   );
 
   mealsData = detailedMeals;
-  showMeals1(mealsData);
+  showMeals1(mealsData); 
 }
 
 hSearch.addEventListener("input", () => {
@@ -127,10 +127,10 @@ hSearch.addEventListener("input", () => {
     const query = hSearch.value.trim();
 
     if (!query) {
-      loadMealsC1("All");
+      document.querySelector("#s-list li:first-child").click();
       return;
     }
-
+    
     const res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
     );
