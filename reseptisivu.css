@@ -76,6 +76,8 @@ body.no-scroll {
 .p1 {
     background-color: #96b652;
     width: 75%;
+    justify-self: center;
+        height: 75%;
     position: fixed;
     padding: 30px;
     inset: 0;
@@ -89,6 +91,23 @@ body.no-scroll {
     max-height: 100%;
 }
 
+.p1-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.p1-nav-button {
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    background-color: #d1872d;
+    border-radius: 20px;
+    border-width: 0;
+    font-size: 20px;
+    cursor: pointer;
+}
 .p1-img {
     display: flex;
     justify-self: center;
@@ -96,12 +115,13 @@ body.no-scroll {
     max-width: 200px;
 }
 .ing-img {
-    max-width: 100px;
+    max-width: 50px;
 }
 
 .p1-content::-webkit-scrollbar {
     display: none;
 }
+
 #p1-ingredients li::marker {
     content: "";
 }
@@ -114,4 +134,9 @@ body.no-scroll {
 .instructions-box {
     display: flex;
     flex-direction: row;
+}
+.disc-box {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
