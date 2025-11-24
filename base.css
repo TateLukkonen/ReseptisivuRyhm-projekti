@@ -67,7 +67,7 @@ input::placeholder {
   color: black;
   font-family: "Englebert", cursive;
 }
-.grid-container {
+<<<<<<< HEAD .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   row-gap: 25px;
@@ -177,4 +177,8 @@ input::placeholder {
 .c-info img {
   height: 50px;
   width: 75px;
+}
+
+button {
+  font-family: "Englebert", cursive;
 }
