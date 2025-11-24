@@ -67,7 +67,7 @@ input::placeholder {
   color: black;
   font-family: "Englebert", cursive;
 }
-<<<<<<< HEAD .grid-container {
+.grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   row-gap: 25px;
@@ -99,12 +99,13 @@ input::placeholder {
 }
 #h-search {
   border-radius: 20px;
-  height: 45px;
   border-style: none;
-  width: 100px;
   background-color: #96b652;
 }
-
+#filerBarSearch {
+  height: 20px;
+  length: 100px;
+}
 .main-area {
   display: flex;
   flex-direction: row;
