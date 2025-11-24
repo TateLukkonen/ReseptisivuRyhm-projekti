@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="etusivu.css" />
     <link rel="stylesheet" href="base.css" />
     <link rel="icon" type="image/png" href="assets/favicon-32x32.png" />
+
     <title>Etusivu</title>
   </head>
   <body class="body">
@@ -16,12 +17,22 @@
         >
       </div>
       <div class="rightButtons">
-        <input type="text" class="headerButton searchButton" placeholder="Search meals..."></input>
+        <input type="text" id="h-search" class="headerButton searchButton" placeholder="Search meals..."></input>
       </div>
     </header>
-    <h1 class="h1">Päivän resepti</h1>
+    <h1 class="h1" id="pageTitle">Päivän resepti</h1>
     <div id="tempImg"></div>
     <div id="tempDisc"></div>
+    <div class="main-area" id="mainArea" style="display: none;">
+      <div class="filter-bar" id="filterBar">
+        <div class="search-bar">
+          <input type="text" id="s-search" placeholder="Search meals..." />
+        </div>
+        <ul id="s-list"></ul>
+      </div>
+      <div id="g1" class="grid-container"></div>
+    </div>
   </body>
   <script src="etusivu.js"></script>
 </html>
+  

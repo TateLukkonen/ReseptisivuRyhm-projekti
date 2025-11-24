@@ -118,7 +118,7 @@ async function loadMealsC1(category) {
   );
 
   mealsData = detailedMeals;
-  showMeals1(mealsData); 
+  showMeals1(mealsData);
 }
 
 hSearch.addEventListener("input", () => {
@@ -130,7 +130,7 @@ hSearch.addEventListener("input", () => {
       document.querySelector("#s-list li:first-child").click();
       return;
     }
-    
+
     const res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
     );
@@ -206,7 +206,7 @@ function openPopup(index) {
   }
 
   p1.classList.add("p1-show");
-  p1.classList.remove("hidden")
+  p1.classList.remove("hidden");
 }
 
 p1Close.addEventListener("click", () => p1.classList.add("hidden"));
@@ -218,3 +218,5 @@ p1Next.addEventListener("click", () => {
 });
 
 loadC1();
+
+search;
