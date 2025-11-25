@@ -60,7 +60,7 @@ body {
     flex-direction: column;
 }
 
-.c1 img {
+.c1-img {
     width: 200px;
     height: 200px;
     cursor: pointer;
@@ -140,4 +140,13 @@ body.no-scroll {
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+@media screen and (max-width: 376px) {
+    .filter-bar {
+        display: none;
+    }
+
+    #g1 {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

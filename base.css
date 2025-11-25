@@ -89,10 +89,7 @@ input::placeholder {
   align-items: center;
   flex-direction: column;
 }
-.c1 img {
-  width: 200px;
-  height: 200px;
-}
+
 .c-info img {
   height: 50px;
   width: 75px;
@@ -118,8 +115,8 @@ input::placeholder {
   top: 20px;
   background-color: #d1872d;
   height: 650px;
-  display: none;
 }
+
 .filter-bar.show {
   display: block;
 }
@@ -150,13 +147,7 @@ input::placeholder {
 #s-list li.active {
   font-weight: bold;
 }
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 25px;
-  place-items: center;
-  width: -webkit-fill-available;
-}
+
 .c1 {
   display: flex;
   flex-direction: column;
@@ -171,7 +162,7 @@ input::placeholder {
   align-items: center;
   flex-direction: column;
 }
-.c1 img {
+.c-img {
   width: 200px;
   height: 200px;
 }
@@ -182,4 +173,45 @@ input::placeholder {
 
 button {
   font-family: "Englebert", cursive;
+}
+
+@media screen and (max-width: 376px) {
+  h4 {
+    font-size: 15px;
+  }
+
+  .header {
+    padding: 15px 30px;
+  }
+
+  .headerButton {
+    height: 25px;
+  }
+
+  .searchButton {
+    width: 125px;
+  }
+
+  .etusivuButton {
+    width: 75px;
+  }
+
+  .c1 {
+    width: 175px;
+    height: 225px;
+  }
+
+  .c-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .c-info {
+    font-size: 11px;
+  }
+
+  .c-info img {
+    width: 45px;
+    height: 30px;
+  }
 }
