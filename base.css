@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "comicRelief";
+  src: url(assets/ComicRelief-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Englebert";
+  src: url(assets/Englebert-Regular.ttf) format("truetype");
+}
+
 .hidden {
   display: none;
 }
@@ -36,14 +45,6 @@ a {
 .searchButton {
   width: 250px;
 }
-@font-face {
-  font-family: "comicRelief";
-  src: url(assets/ComicRelief-Regular.ttf) format("truetype");
-}
-@font-face {
-  font-family: "Englebert";
-  src: url(assets/Englebert-Regular.ttf) format("truetype");
-}
 
 body {
   font-family: "Comic Relief", cursive;
@@ -54,8 +55,9 @@ a {
 }
 
 h4 {
-  font-size: 25px;
+  font-size: 21px;
   font-family: "Englebert", cursive;
+  text-align: center;
 }
 
 h1 {
@@ -67,151 +69,29 @@ input::placeholder {
   color: black;
   font-family: "Englebert", cursive;
 }
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 25px;
-  place-items: center;
-  width: -webkit-fill-available;
-  margin-top: 20px;
-}
-.c1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-  height: 400px;
-  border-radius: 10px;
-  background-color: #96b652;
-}
-.c-info {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.c-info img {
-  height: 50px;
-  width: 75px;
-}
-#h-search {
-  border-radius: 20px;
-  border-style: none;
-  background-color: #96b652;
-}
-#filerBarSearch {
-  height: 20px;
-  width: 100px;
-}
-.main-area {
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-}
-.filter-bar {
-  width: 200px;
-  position: sticky;
-  padding-top: 10px;
-  top: 20px;
-  background-color: #d1872d;
-  height: 650px;
-}
-
-.filter-bar.show {
-  display: block;
-}
-.search-bar {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-.search-bar input {
-  border-radius: 10px;
-  height: 20px;
-  border-style: none;
-  width: 150px;
-  background-color: #96b652;
-}
-#s-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-#s-list li {
-  padding: 5px 10px;
-  cursor: pointer;
-}
-#s-list li:hover {
-  color: blue;
-}
-#s-list li.active {
-  font-weight: bold;
-}
-
-.c1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-  height: 400px;
-  border-radius: 10px;
-  background-color: #96b652;
-}
-.c-info {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.c-img {
-  width: 200px;
-  height: 200px;
-}
-.c-info img {
-  height: 50px;
-  width: 75px;
-}
 
 button {
-  font-family: "Englebert", cursive;
+  font-family: "Comic Relief", cursive;
 }
 
 @media screen and (max-width: 376px) {
   h4 {
-    font-size: 15px;
+    font-size: 11px;
   }
 
   .header {
     padding: 15px 30px;
   }
-
+  
   .headerButton {
     height: 25px;
   }
-
+  
   .searchButton {
     width: 125px;
   }
-
+  
   .etusivuButton {
     width: 75px;
-  }
-
-  .c1 {
-    width: 175px;
-    height: 225px;
-  }
-
-  .c-img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .c-info {
-    font-size: 11px;
-  }
-
-  .c-info img {
-    width: 45px;
-    height: 30px;
   }
 }

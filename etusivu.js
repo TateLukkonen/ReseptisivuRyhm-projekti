@@ -1,47 +1,7 @@
 const hSearch = document.getElementById("h-search");
 const sSearch = document.getElementById("s-search");
-const g1 = document.getElementById("g1");
 const tempImg = document.getElementById("tempImg");
 const tempDisc = document.getElementById("tempDisc");
-const mainArea = document.getElementById("mainArea");
-const filterBar = document.getElementById("filterBar");
-const sList = document.getElementById("s-list");
-const pageTitle = document.getElementById("pageTitle");
-
-let mealsData = [];
-let categoriesLoaded = false;
-
-const flagCodes = {
-  American: "us",
-  British: "gb",
-  Canadian: "ca",
-  Chinese: "cn",
-  Croatian: "hr",
-  Dutch: "nl",
-  Egyptian: "eg",
-  French: "fr",
-  Greek: "gr",
-  Indian: "in",
-  Irish: "ie",
-  Italian: "it",
-  Jamaican: "jm",
-  Japanese: "jp",
-  Kenyan: "ke",
-  Malaysian: "my",
-  Mexican: "mx",
-  Moroccan: "ma",
-  Polish: "pl",
-  Portuguese: "pt",
-  Russian: "ru",
-  Spanish: "es",
-  Thai: "th",
-  Tunisian: "tn",
-  Turkish: "tr",
-  Vietnamese: "vn",
-  Norwegian: "no",
-  Filipino: "ph",
-  Ukrainian: "ua",
-};
 
 async function randomizeEtusivu() {
   const randomRecipe = await fetch(

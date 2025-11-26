@@ -2,6 +2,8 @@ const sList = document.getElementById("s-list");
 const g1 = document.getElementById("g1");
 const hSearch = document.getElementById("h-search");
 const fSearch = document.getElementById("f-search")
+const filterPopup = document.getElementById("filterBarPopupMobile");
+const filterBar = document.getElementById("filter-bar");
 
 const p1 = document.getElementById("p1");
 const p1Img = document.getElementById("p1-img");
@@ -48,6 +50,14 @@ const flagCodes = {
   Ukrainian: "ua",
 };
 
+filterPopup.addEventListener("click", (e) => {
+  if (filterBar.classList.contains("hidden")) {
+    filterBar.classList.remove("hidden");
+  } else {
+    filterBar.classList.add("hidden");
+  }
+});
+
 if (fSearch) {
   fSearch.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
@@ -59,8 +69,6 @@ if (fSearch) {
     }
   });
 }
-
-
 
 window.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
