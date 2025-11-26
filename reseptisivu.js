@@ -50,6 +50,16 @@ const flagCodes = {
   Ukrainian: "ua",
 };
 
+function hideOnWidth() {
+  if (window.innerWidth > 375) {
+    filterBar.classList.remove("hidden");
+  } else {
+    filterBar.classList.add("hidden");
+  }
+}
+hideOnWidth();
+window.addEventListener("resize", hideOnWidth);
+
 filterPopup.addEventListener("click", (e) => {
   if (filterBar.classList.contains("hidden")) {
     filterBar.classList.remove("hidden");
@@ -57,6 +67,7 @@ filterPopup.addEventListener("click", (e) => {
     filterBar.classList.add("hidden");
   }
 });
+
 
 if (fSearch) {
   fSearch.addEventListener("keydown", (e) => {
