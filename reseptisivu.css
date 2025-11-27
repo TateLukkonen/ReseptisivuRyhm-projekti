@@ -214,6 +214,7 @@ body.no-scroll {
     }
     .p1 h3 {
         font-size: 12px;
+        justify-self: center;
     }
     .p1 span {
         font-size: 9px;
@@ -221,6 +222,7 @@ body.no-scroll {
     .disc-box {
         display: block;
         line-height: 10px;
+        width: 70%;
     }
     .ing-img {
         max-width: 25px;
