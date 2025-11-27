@@ -20,6 +20,7 @@ let searchTimeout = null;
 let activeFetchController = null;
 
 function safeFetch(url) {
+  console.log("Fetching URL:", url);
   if (activeFetchController) activeFetchController.abort();
   activeFetchController = new AbortController();
   const signal = activeFetchController.signal;
@@ -27,9 +28,11 @@ function safeFetch(url) {
     .then((r) => r.json())
     .catch((e) => {
       if (e.name === "AbortError") return null;
+      console.error("Fetch failed:", e); 
       throw e;
     });
 }
+
 
 const flagCodes = {
   American: "us",
