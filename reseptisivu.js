@@ -1,7 +1,7 @@
 const sList = document.getElementById("s-list");
 const g1 = document.getElementById("g1");
 const hSearch = document.getElementById("h-search");
-const fSearch = document.getElementById("f-search")
+const fSearch = document.getElementById("f-search");
 const filterPopup = document.getElementById("filterBarPopupMobile");
 const filterBar = document.getElementById("filter-bar");
 
@@ -17,6 +17,19 @@ const p1Next = document.getElementById("p1-next");
 let mealsData = [];
 let currentIndex = 0;
 let searchTimeout = null;
+let activeFetchController = null;
+
+function safeFetch(url) {
+  if (activeFetchController) activeFetchController.abort();
+  activeFetchController = new AbortController();
+  const signal = activeFetchController.signal;
+  return fetch(url, { signal })
+    .then((r) => r.json())
+    .catch((e) => {
+      if (e.name === "AbortError") return null;
+      throw e;
+    });
+}
 
 const flagCodes = {
   American: "us",
@@ -50,6 +63,16 @@ const flagCodes = {
   Ukrainian: "ua",
 };
 
+const flagAliases = {};
+Object.keys(flagCodes).forEach((area) => {
+  const lower = area.toLowerCase();
+  flagAliases[lower] = area;
+  flagAliases[lower.replace(" ", "")] = area;
+  flagAliases[lower + "n"] = area;
+  flagAliases[lower.replace("an", "")] = area;
+  if (area.endsWith("n")) flagAliases[lower.slice(0, -1)] = area;
+});
+
 function hideOnWidth() {
   if (window.innerWidth > 375) {
     filterBar.classList.remove("hidden");
@@ -60,14 +83,9 @@ function hideOnWidth() {
 hideOnWidth();
 window.addEventListener("resize", hideOnWidth);
 
-filterPopup.addEventListener("click", (e) => {
-  if (filterBar.classList.contains("hidden")) {
-    filterBar.classList.remove("hidden");
-  } else {
-    filterBar.classList.add("hidden");
-  }
+filterPopup.addEventListener("click", () => {
+  filterBar.classList.toggle("hidden");
 });
-
 
 if (fSearch) {
   fSearch.addEventListener("keydown", (e) => {
@@ -75,7 +93,9 @@ if (fSearch) {
       e.preventDefault();
       const query = fSearch.value.trim();
       if (query) {
-        window.location.href = `reseptisivu.html?search=${encodeURIComponent(query)}`;
+        window.location.href = `reseptisivu.html?search=${encodeURIComponent(
+          query
+        )}`;
       }
     }
   });
@@ -89,11 +109,17 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   if (query) {
     if (hSearch) hSearch.value = query;
-    const res = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(query)}`
+    const flagArea = flagAliases[query.toLowerCase()];
+    if (flagArea) {
+      await loadByFlag(flagArea);
+      return;
+    }
+    const data = await safeFetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(
+        query
+      )}`
     );
-    const data = await res.json();
-    if (data.meals) {
+    if (data?.meals) {
       mealsData = data.meals;
       showMeals1(mealsData);
     } else {
@@ -102,17 +128,19 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-
 async function loadC1() {
-  const res = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list");
-  const data = await res.json();
+  const data = await safeFetch(
+    "https://www.themealdb.com/api/json/v1/1/list.php?c=list"
+  );
   sList.innerHTML = "";
 
   const allLi = document.createElement("li");
   allLi.textContent = "All";
   allLi.classList.add("active");
   allLi.addEventListener("click", async () => {
-    document.querySelectorAll("#s-list li").forEach((li) => li.classList.remove("active"));
+    document
+      .querySelectorAll("#s-list li")
+      .forEach((li) => li.classList.remove("active"));
     allLi.classList.add("active");
     await loadAllMeals();
   });
@@ -122,7 +150,9 @@ async function loadC1() {
     const li = document.createElement("li");
     li.textContent = c.strCategory;
     li.addEventListener("click", async () => {
-      document.querySelectorAll("#s-list li").forEach((li) => li.classList.remove("active"));
+      document
+        .querySelectorAll("#s-list li")
+        .forEach((li) => li.classList.remove("active"));
       li.classList.add("active");
       await loadMealsC1(c.strCategory);
     });
@@ -138,8 +168,10 @@ async function loadAllMeals() {
   const allMeals = [];
 
   for (const letter of letters) {
-    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`);
-    const data = await res.json();
+    const data = await safeFetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`
+    );
+    if (!data) return;
     if (data.meals) allMeals.push(...data.meals);
   }
 
@@ -149,16 +181,47 @@ async function loadAllMeals() {
 
 async function loadMealsC1(category) {
   g1.innerHTML = "<p>Loading meals...</p>";
-  const res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
-  const data = await res.json();
 
-  const detailedMeals = await Promise.all(
-    data.meals.map(async (m) => {
-      const mealRes = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${m.idMeal}`);
-      const mealData = await mealRes.json();
-      return mealData.meals[0];
-    })
+  const data = await safeFetch(
+    `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
   );
+  if (!data || !data.meals) return;
+
+  const detailedMeals = [];
+
+  for (const m of data.meals) {
+    const mealData = await safeFetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${m.idMeal}`
+    );
+    if (!mealData) return;
+    detailedMeals.push(mealData.meals[0]);
+  }
+
+  mealsData = detailedMeals;
+  showMeals1(mealsData);
+}
+
+async function loadByFlag(area) {
+  g1.innerHTML = "<p>Loading meals...</p>";
+  const data = await safeFetch(
+    `https://www.themealdb.com/api/json/v1/1/filter.php?a=${encodeURIComponent(
+      area
+    )}`
+  );
+  if (!data || !data.meals) {
+    g1.innerHTML = "<p>No meals found.</p>";
+    return;
+  }
+
+  const detailedMeals = [];
+
+  for (const m of data.meals) {
+    const mealData = await safeFetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${m.idMeal}`
+    );
+    if (!mealData) return;
+    detailedMeals.push(mealData.meals[0]);
+  }
 
   mealsData = detailedMeals;
   showMeals1(mealsData);
@@ -173,10 +236,18 @@ hSearch.addEventListener("input", () => {
       return;
     }
 
-    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
-    const data = await res.json();
+    const lower = query.toLowerCase();
+    const flagArea = flagAliases[lower];
 
-    if (data.meals) {
+    if (flagArea) {
+      await loadByFlag(flagArea);
+      return;
+    }
+
+    const data = await safeFetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
+    );
+    if (data?.meals) {
       mealsData = data.meals;
       showMeals1(mealsData);
     } else {
@@ -190,7 +261,6 @@ function showMeals1(meals) {
   meals.forEach((m, index) => {
     const flagCode = flagCodes[m.strArea] ? flagCodes[m.strArea] : "un";
     const flagURL = `https://flagcdn.com/w40/${flagCode}.png`;
-
     const c = document.createElement("div");
     c.className = "c1";
     c.innerHTML = `
@@ -221,7 +291,9 @@ function openPopup(index) {
   steps.forEach((step, i) => {
     const stepDiv = document.createElement("div");
     stepDiv.className = "step-item";
-    stepDiv.innerHTML = `<span class="step-num">${i + 1}.</span><span class="step-text">${step}</span>`;
+    stepDiv.innerHTML = `<span class="step-num">${
+      i + 1
+    }.</span><span class="step-text">${step}</span>`;
     p1Instructions.appendChild(stepDiv);
   });
 
@@ -231,8 +303,12 @@ function openPopup(index) {
     const measure = m[`strMeasure${i}`];
     if (ing && ing.trim() !== "") {
       const li = document.createElement("li");
-      const imgUrl = `https://www.themealdb.com/images/ingredients/${encodeURIComponent(ing)}.png`;
-      li.innerHTML = `<img class="ing-img" src="${imgUrl}" alt="${ing}"><span class="ing-text">${measure ? measure + " " : ""}${ing}</span>`;
+      const imgUrl = `https://www.themealdb.com/images/ingredients/${encodeURIComponent(
+        ing
+      )}.png`;
+      li.innerHTML = `<img class="ing-img" src="${imgUrl}" alt="${ing}"><span class="ing-text">${
+        measure ? measure + " " : ""
+      }${ing}</span>`;
       p1Ingredients.appendChild(li);
     }
   }
