@@ -10,6 +10,7 @@ const p1Img = document.getElementById("p1-img");
 const p1Name = document.getElementById("p1-name");
 const p1Instructions = document.getElementById("p1-instructions");
 const p1Ingredients = document.getElementById("p1-ingredients");
+const p1link = document.getElementById("p1-link");
 const p1Close = document.getElementById("p1-close");
 const p1Prev = document.getElementById("p1-prev");
 const p1Next = document.getElementById("p1-next");
@@ -20,7 +21,6 @@ let searchTimeout = null;
 let activeFetchController = null;
 
 function safeFetch(url) {
-  console.log("Fetching URL:", url);
   if (activeFetchController) activeFetchController.abort();
   activeFetchController = new AbortController();
   const signal = activeFetchController.signal;
@@ -28,11 +28,10 @@ function safeFetch(url) {
     .then((r) => r.json())
     .catch((e) => {
       if (e.name === "AbortError") return null;
-      console.error("Fetch failed:", e); 
+      console.error("Fetch failed:", e);
       throw e;
     });
 }
-
 
 const flagCodes = {
   American: "us",
@@ -315,6 +314,12 @@ function openPopup(index) {
       p1Ingredients.appendChild(li);
     }
   }
+  p1link.innerHTML = "";
+
+  const sourceLink = document.createElement("div");
+  sourceLink.classList.add("link");
+  sourceLink.innerHTML = `<a href="${m.strSource}">${m.strSource}<a>`;
+  p1link.appendChild(sourceLink);
 
   p1.classList.add("p1-show");
   p1.classList.remove("hidden");

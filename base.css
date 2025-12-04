@@ -31,9 +31,13 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.aButton {
   text-decoration: none;
   color: black;
 }
+
+
 .headerButton {
   background-color: #96b652;
   border-style: none;
