@@ -88,7 +88,7 @@ body.no-scroll {
   inset: 0;
   border-radius: 10px;
   top: 100px;
-  border: black, solid, 3px;
+  border: black solid 3px;
   background-color: #96b652;
   width: 75%;
   justify-self: center;
@@ -98,7 +98,6 @@ body.no-scroll {
   inset: 0;
   border-radius: 10px;
   top: 100px;
-  border: black, solid, 3px;
 }
 
 .p1 h3 {
@@ -167,7 +166,7 @@ body.no-scroll {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    justify-self: anchor-center;
+    justify-self: center;
     top: 100px;
     width: 75%;
     height: 400px;
@@ -191,6 +190,7 @@ body.no-scroll {
   }
   .main-area {
     margin-top: 0px;
+    display: grid;
   }
   #g1 {
     grid-template-columns: repeat(2, 1fr);
